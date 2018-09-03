@@ -2,6 +2,7 @@ module Spree
   module Admin
     class ThemesController < Spree::Admin::BaseController
       skip_before_action :authorize_admin
+      skip_before_action :verify_authenticity_token, only: [:state_change]
       before_action :load_theme, only: [:state_change, :destroy, :download]
       before_action :load_themes
 
